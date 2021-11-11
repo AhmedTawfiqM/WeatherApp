@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:roaa_weather/common/core/constant.dart';
 import 'package:roaa_weather/common/core/state/resource_state.dart';
-import 'package:roaa_weather/common/data/shar_pref.dart';
+import 'package:roaa_weather/common/data/shared_pref/data_keys.dart';
+import 'package:roaa_weather/common/data/shared_pref/shar_pref.dart';
 import 'package:roaa_weather/common/presentation/screens/register/register_screen.dart';
 import 'package:roaa_weather/common/presentation/screens/weather/weather_screen.dart';
 import 'package:roaa_weather/common/presentation/shared/cubit/authentication_cubit.dart';
@@ -152,7 +153,7 @@ class LogInScreen extends StatelessWidget {
   }
 
   saveIdThenNavigate(BuildContext context, String id) {
-    CacheHelper.putData(key: "uId", value: id);
+    AppSharedPref.putData(key: PrefKey.userId, value: id);
 
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
       return WeatherScreen();

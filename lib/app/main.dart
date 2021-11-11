@@ -4,14 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:roaa_weather/common/core/app_route.dart';
 import 'package:roaa_weather/common/core/constant.dart';
-import 'package:roaa_weather/common/data/shar_pref.dart';
+import 'package:roaa_weather/common/data/shared_pref/shar_pref.dart';
 import 'di/app_injector.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  await CacheHelper.init();
+  await AppSharedPref.init();
   Widget widget;
 
   AppRoute appRoute = AppRoute();
