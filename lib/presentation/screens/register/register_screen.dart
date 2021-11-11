@@ -69,6 +69,7 @@ class SignUpScreen extends StatelessWidget {
                         prefix: Icon(Icons.drive_file_rename_outline),
                         type: TextInputType.text),
                     SizedBox(
+                      
                       height: 40,
                     ),
                     appTextFormField(
