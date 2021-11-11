@@ -1,14 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:roaa_weather/data/repositry/auth_repo.dart';
-import 'package:roaa_weather/data/repositry/weather_repo.dart';
-import 'package:roaa_weather/data/web_services/auth_web_service.dart';
-import 'package:roaa_weather/data/web_services/wearher_web_service.dart';
-import 'package:roaa_weather/presentation/screens/weather/weather_view_model.dart';
-import 'package:roaa_weather/presentation/shared/cubit/authentication_cubit.dart';
+import 'package:roaa_weather/common/data/domain/auth/auth_data_source.dart';
+import 'package:roaa_weather/common/data/domain/auth/auth_repo.dart';
+import 'package:roaa_weather/common/data/domain/auth/auth_web_service.dart';
+import 'package:roaa_weather/common/data/domain/weather/wearher_web_service.dart';
+import 'package:roaa_weather/common/data/domain/weather/weather_repo.dart';
+import 'package:roaa_weather/common/presentation/screens/weather/weather_view_model.dart';
+import 'package:roaa_weather/common/presentation/shared/cubit/authentication_cubit.dart';
+
 
 class AppInjector {
   var authWebService = AuthWebService();
+  var authDataSource = AuthDataSource();
   late AuthRepo authRepo = AuthRepo(authWebService);
   late AuthCubit cubitLogin = AuthCubit(authRepo);
 

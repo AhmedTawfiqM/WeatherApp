@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:roaa_weather/core/state/resource_state.dart';
-import 'package:roaa_weather/data/repositry/auth_repo.dart';
+import 'package:roaa_weather/common/core/state/resource_state.dart';
+import 'package:roaa_weather/common/data/domain/auth/auth_repo.dart';
 
 class AuthCubit extends Cubit<ResourceState> {
   final AuthRepo authRepo;

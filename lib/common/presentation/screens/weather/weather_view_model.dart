@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:roaa_weather/data/models/weather/country_weather.dart';
-import 'package:roaa_weather/data/repositry/weather_repo.dart';
-import 'package:roaa_weather/data/web_services/wearher_web_service.dart';
+import 'package:roaa_weather/common/data/domain/weather/weather_repo.dart';
+import 'package:roaa_weather/common/data/models/weather/country_weather.dart';
 
 class WeatherViewModel extends ChangeNotifier {
   final WeatherRepo weatherRepo;
@@ -35,5 +34,9 @@ class WeatherViewModel extends ChangeNotifier {
           });
       print("${e.toString()} ;;;;");
     });
+  }
+
+  refresh(BuildContext context, String countryName) {
+    getWeatherByCountryName(context,countryName);
   }
 }

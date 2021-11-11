@@ -1,5 +1,6 @@
-import 'package:roaa_weather/data/models/weather/country_weather.dart';
-import 'package:roaa_weather/data/web_services/wearher_web_service.dart';
+
+import 'package:roaa_weather/common/data/domain/weather/wearher_web_service.dart';
+import 'package:roaa_weather/common/data/models/weather/country_weather.dart';
 
 class WeatherRepo {
   final WeatherWebService weatherWebService;

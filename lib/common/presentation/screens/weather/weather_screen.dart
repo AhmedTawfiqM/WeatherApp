@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:roaa_weather/presentation/screens/weather/weather_view_model.dart';
+import 'package:roaa_weather/common/presentation/screens/weather/weather_view_model.dart';
 import '../weather_details/weather_datail_view.dart';
 
 class WeatherScreen extends StatelessWidget {

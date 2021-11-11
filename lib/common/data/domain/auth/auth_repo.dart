@@ -1,4 +1,5 @@
-import 'package:roaa_weather/data/web_services/auth_web_service.dart';
+
+import 'auth_web_service.dart';
 
 class AuthRepo{
   final AuthWebService _authWebService;
