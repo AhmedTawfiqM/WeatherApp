@@ -1,21 +1,21 @@
-
-import 'package:roaa_weather/common/data/domain/weather/wearher_web_service.dart';
+import 'package:roaa_weather/common/data/domain/weather/remote_weather_data_src.dart';
 import 'package:roaa_weather/common/data/models/weather/country_weather.dart';
+import 'package:roaa_weather/common/data/shared/data_source.dart';
+import 'local_weather_data_src.dart';
 
 class WeatherRepo {
-  final WeatherWebService weatherWebService;
+  final RemoteWeatherDataSrc remoteWeatherDataSrc;
+  final LocalWeatherDataSrc localWeatherDataSrc;
 
-  WeatherRepo(this.weatherWebService);
+  WeatherRepo(this.localWeatherDataSrc, this.remoteWeatherDataSrc);
 
-  CountryWeather _country = initialCountryWeather;
-
-  CountryWeather get country => _country;
-
-  Future<CountryWeather> getWeather(String country) async =>
-      await weatherWebService.getWeather(country).then((value) {
-        _country = CountryWeather.fromjson(value);
-        return _country;
-      }).catchError((e) {
-        print(e.toString());
-      });
+  //TODO: add loadType
+  Future<CountryWeather> getWeather(DataSource dataSrc, String country) {
+    switch (dataSrc) {
+      case DataSource.local:
+        return remoteWeatherDataSrc.getWeather(country); //TODO: add getWeather
+      case DataSource.remote:
+        return remoteWeatherDataSrc.getWeather(country);
+    }
+  }
 }

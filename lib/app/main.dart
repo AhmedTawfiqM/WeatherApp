@@ -13,7 +13,8 @@ void main() async {
 
   App().setup();
 
-  runApp(WeatherApp(AppRoute().widget()));
+  var widget = AppRoute().widget();
+  runApp(WeatherApp(widget));
 }
 
 class WeatherApp extends StatelessWidget {

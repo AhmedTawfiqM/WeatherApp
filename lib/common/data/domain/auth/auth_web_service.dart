@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthWebService {
 
+
   Future<UserCredential> register({
     required String password,
     required String email,

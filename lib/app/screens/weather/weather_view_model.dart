@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:roaa_weather/common/data/domain/weather/weather_repo.dart';
 import 'package:roaa_weather/common/data/models/weather/country_weather.dart';
+import 'package:roaa_weather/common/data/shared/data_source.dart';
 
 class WeatherViewModel extends ChangeNotifier {
   final WeatherRepo weatherRepo;
@@ -15,9 +16,9 @@ class WeatherViewModel extends ChangeNotifier {
 
   bool get hasData => _hasData;
 
-  getWeatherByCountryName(BuildContext context, String countryName) async {
+  getWeatherByCountryName(BuildContext context,DataSource dataSrc, String countryName) async {
 
-    weatherRepo.getWeather(countryName).then((value) {
+    weatherRepo.getWeather(dataSrc,countryName).then((value) {
       _country = value;
       _hasData = true;
 
@@ -36,7 +37,7 @@ class WeatherViewModel extends ChangeNotifier {
     });
   }
 
-  refresh(BuildContext context, String countryName) {
-    getWeatherByCountryName(context,countryName);
-  }
+  // refresh(BuildContext context, String countryName) {
+  //   getWeatherByCountryName(context,countryName);
+  // }
 }

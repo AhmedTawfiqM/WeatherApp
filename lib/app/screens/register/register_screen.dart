@@ -7,7 +7,6 @@ import 'package:roaa_weather/common/presentation/shared/cubit/authentication_cub
 import 'package:roaa_weather/common/presentation/widgets/app_text_form_field.dart';
 import '../weather/weather_screen.dart';
 
-
 class SignUpScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController email = TextEditingController();
