@@ -6,4 +6,9 @@ class SharedPrefHelper {
   setUserId(String id) {
     AppSharedPref.putData(key: PrefKey.userId, value: id);
   }
+
+  bool isLogin() {
+    var userId = AppSharedPref.getData(PrefKey.userId);
+    return userId != null;
+  }
 }

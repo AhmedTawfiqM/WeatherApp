@@ -8,7 +8,6 @@ import 'package:roaa_weather/common/data/domain/weather/weather_repo.dart';
 import 'package:roaa_weather/common/presentation/screens/weather/weather_view_model.dart';
 import 'package:roaa_weather/common/presentation/shared/cubit/authentication_cubit.dart';
 
-
 class AppInjector {
   var authWebService = AuthWebService();
   var authDataSource = AuthDataSource();
