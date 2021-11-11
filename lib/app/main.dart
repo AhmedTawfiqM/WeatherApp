@@ -13,14 +13,14 @@ void main() async {
 
   App().setup();
 
-  runApp(MyApp(AppRoute().widget()));
+  runApp(WeatherApp(AppRoute().widget()));
 }
 
-class MyApp extends StatelessWidget {
+class WeatherApp extends StatelessWidget {
   Widget widget;
   var appInjector = AppInjector();
 
-  MyApp(this.widget);
+  WeatherApp(this.widget, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
