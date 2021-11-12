@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:roaa_weather/app/screens/weather/views/search_weather_widget.dart';
+import 'package:roaa_weather/app/screens/weather/views/weather_widget.dart';
 import 'package:roaa_weather/app/screens/weather/weather_view_model.dart';
 import 'package:roaa_weather/common/data/shared/data_source.dart';
 import '../weather_details/weather_datail_view.dart';
 
 class WeatherScreen extends StatelessWidget {
-  TextEditingController countryController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  late WeatherViewModel weatherVM;
 
   @override
   Widget build(BuildContext context) {
-    var weatherViewModel = Provider.of<WeatherViewModel>(context);
+    weatherVM = Provider.of<WeatherViewModel>(context);
 
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
@@ -24,65 +27,20 @@ class WeatherScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  height: 70,
-                  width: MediaQuery.of(context).size.width - 30,
-                  child: TextFormField(
-                      controller: countryController,
-                      validator: (v) {
-                        if (v.toString().isEmpty) {
-                          return "Search can not be empty";
-                        } else {}
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Colors.deepOrange),
-                            borderRadius: BorderRadius.circular(20)),
-                        focusColor: Colors.black,
-                        labelText: "Search For Your Country Weather",
-                        labelStyle: const TextStyle(fontSize: 20),
-                        suffix: IconButton(
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              weatherViewModel.getWeatherByCountryName(context,
-                                  DataSource.remote, countryController.text);
-
-                              countryController.clear();
-                              //   provider.getAllCountries();
-                            }
-                          },
-                          icon: const Icon(Icons.search),
-                        ),
-                      ),
-                      onFieldSubmitted: (v) {
-                        if (formKey.currentState!.validate()) {
-                          weatherViewModel.getWeatherByCountryName(
-                              context,DataSource.remote, countryController.text);
-                          countryController.clear();
-                        }
-                      },
-                      keyboardType: TextInputType.emailAddress),
+                SearchTextField(
+                    controller: countryController,
+                    onPressed: () {
+                      getWeather(context);
+                    },
+                    onFieldSubmitted: () {
+                      getWeather(context);
+                    }),
+                WeatherText(
+                  weatherItem: weatherVM.country,
+                  hasData: weatherVM.hasData,
                 ),
-                Column(
-                  children: [
-                    Image.asset(
-                      "assets/weather.png",
-                      fit: BoxFit.cover,
-                      width: 200,
-                      height: 200,
-                    ),
-                    if (weatherViewModel.country != null)
-                      Text(
-                        weatherViewModel.hasData
-                            ? "${(weatherViewModel.country!.temp - 273.15).toInt()} C"
-                            : "",
-                        style: Theme.of(context).textTheme.bodyText2,
-                      )
-                  ],
-                ),
-                weatherViewModel.hasData
-                    ? _weatherDetailsWidget(context, weatherViewModel)
+                weatherVM.hasData
+                    ? _weatherDetailsWidget(context, weatherVM)
                     : Container(),
               ],
             ),
@@ -92,12 +50,22 @@ class WeatherScreen extends StatelessWidget {
     );
   }
 
-  _weatherDetailsWidget(BuildContext context, var provider) {
+  getWeather(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      weatherVM.getWeatherByCountryName(
+          context, DataSource.remote, countryController.text);
+
+      countryController.clear();
+      //   provider.getAllCountries();
+    }
+  }
+
+  _weatherDetailsWidget(BuildContext context, var weatherVM) {
     return InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => WeatherDetailsView(
-                  provider.country, (provider.country.temp - 273.15).toInt())));
+              builder: (context) => WeatherDetailsView(weatherVM.country,
+                  (weatherVM.country.temp - 273.15).toInt())));
         },
         child: Text(
           "Click  Here For Weather Details",
