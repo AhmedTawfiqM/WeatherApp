@@ -18,8 +18,8 @@ void main() async {
 }
 
 class WeatherApp extends StatelessWidget {
-  Widget widget;
-  var appInjector = AppInjector();
+  final Widget widget;
+  final appInjector = AppInjector();
 
   WeatherApp(this.widget, {Key? key}) : super(key: key);
 
