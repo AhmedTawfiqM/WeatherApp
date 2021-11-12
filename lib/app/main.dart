@@ -26,9 +26,9 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: appInjector.injectBloc(),
+      providers: appInjector.injectBlocs(),
       child: MultiProvider(
-        providers: appInjector.injectProvider(),
+        providers: appInjector.injectProviders(),
         child: MaterialApp(
           theme: theme,
           debugShowCheckedModeBanner: false,

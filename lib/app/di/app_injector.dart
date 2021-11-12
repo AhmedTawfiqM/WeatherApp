@@ -23,11 +23,11 @@ class AppInjector {
       WeatherRepo(localWeatherDataSrc, remoteWeatherDataSrc);
   late WeatherViewModel weatherViewModel = WeatherViewModel(weatherRepo);
 
-  injectBloc() {
+  injectBlocs() {
     return [BlocProvider(create: (context) => cubitLogin)];
   }
 
-  injectProvider() {
+  injectProviders() {
     return [Provider<WeatherViewModel>(create: (_) => weatherViewModel)];
   }
 }
