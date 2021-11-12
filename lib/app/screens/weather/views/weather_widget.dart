@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:roaa_weather/common/data/models/weather/country_weather.dart';
+
+import 'package:weather_app/common/data/models/weather/country_weather.dart';
 
 class WeatherText extends StatelessWidget {
-  WeatherText({required this.weatherItem, required this.hasData});
+  WeatherText({required this.weather_app, required this.hasData});
 
-  final CountryWeather? weatherItem;
+  final CountryWeather? weather_app;
   final bool hasData;
 
   @override
@@ -18,9 +19,10 @@ class WeatherText extends StatelessWidget {
           width: 200,
           height: 200,
         ),
-        if (weatherItem != null)
+
+        if (weather_app != null)
           Text(
-            hasData ? "${(weatherItem!.temp - 273.15).toInt()} C" : "",
+            hasData ? "${(weather_app!.temp - 273.15).toInt()} C" : "",
             style: Theme.of(context).textTheme.bodyText2,
           )
       ],

@@ -1,16 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:roaa_weather/app/screens/login/views/button_login.dart';
-import 'package:roaa_weather/app/screens/login/views/sign_chosen.dart';
-import 'package:roaa_weather/app/screens/login/views/text_fields_login.dart';
-import 'package:roaa_weather/app/screens/register/register_screen.dart';
-import 'package:roaa_weather/app/screens/weather/weather_screen.dart';
-import 'package:roaa_weather/common/core/constant.dart';
-import 'package:roaa_weather/common/core/state/resource_state.dart';
-import 'package:roaa_weather/common/data/shared_pref/data_keys.dart';
-import 'package:roaa_weather/common/data/shared_pref/shar_pref.dart';
-import 'package:roaa_weather/common/presentation/shared/cubit/authentication_cubit.dart';
-import 'package:roaa_weather/common/presentation/widgets/app_text_form_field.dart';
+import 'package:weather_app/app/screens/login/views/button_login.dart';
+import 'package:weather_app/app/screens/login/views/sign_chosen.dart';
+import 'package:weather_app/app/screens/login/views/text_fields_login.dart';
+import 'package:weather_app/app/screens/register/register_screen.dart';
+import 'package:weather_app/app/screens/weather/weather_screen.dart';
+import 'package:weather_app/common/core/constant.dart';
+import 'package:weather_app/common/core/state/resource_state.dart';
+import 'package:weather_app/common/data/shared_pref/data_keys.dart';
+import 'package:weather_app/common/data/shared_pref/shar_pref.dart';
+import 'package:weather_app/common/presentation/shared/cubit/authentication_cubit.dart';
 
 class LogInScreen extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -38,7 +38,7 @@ class LogInScreen extends StatelessWidget {
               padding: const EdgeInsets.all(18.0),
               child: Column(
                 children: [
-                  textFieldsLogin(context, cubit,email,password),
+                  textFieldsLogin(context, cubit, email, password),
                   buttonLogin(state, cubit, () {
                     if (formKey.currentState!.validate()) {
                       cubit.logIn(email: email.text, password: password.text);
@@ -47,7 +47,7 @@ class LogInScreen extends StatelessWidget {
                   const SizedBox(
                     height: 40,
                   ),
-                  signChosen(context,(){
+                  signChosen(context, () {
                     navigateToSignUp(context);
                   }),
                 ],

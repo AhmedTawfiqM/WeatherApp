@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:roaa_weather/common/core/app_config.dart';
-import 'package:roaa_weather/common/data/network/interceptor.dart';
+import 'package:weather_app/common/core/app_config.dart';
+
+import 'interceptor.dart';
 
 final appDio = AppDio().setup();
 

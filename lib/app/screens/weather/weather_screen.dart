@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:roaa_weather/app/screens/weather/views/search_weather_widget.dart';
-import 'package:roaa_weather/app/screens/weather/views/weather_widget.dart';
-import 'package:roaa_weather/app/screens/weather/weather_view_model.dart';
-import 'package:roaa_weather/common/data/shared/data_source.dart';
+
+import 'package:weather_app/app/screens/weather/views/search_weather_widget.dart';
+import 'package:weather_app/app/screens/weather/views/weather_widget.dart';
+import 'package:weather_app/app/screens/weather/weather_view_model.dart';
+import 'package:weather_app/common/data/shared/data_source.dart';
 import '../weather_details/weather_datail_view.dart';
 
 class WeatherScreen extends StatelessWidget {
@@ -36,7 +37,7 @@ class WeatherScreen extends StatelessWidget {
                       getWeather(context);
                     }),
                 WeatherText(
-                  weatherItem: weatherVM.country,
+                  weather_app: weatherVM.country,
                   hasData: weatherVM.hasData,
                 ),
                 weatherVM.hasData

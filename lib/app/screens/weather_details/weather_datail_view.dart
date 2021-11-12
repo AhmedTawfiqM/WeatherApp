@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:roaa_weather/common/data/models/weather/country_weather.dart';
+
+import 'package:weather_app/common/data/models/weather/country_weather.dart';
 
 class WeatherDetailsView extends StatelessWidget {
 CountryWeather country;

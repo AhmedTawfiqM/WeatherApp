@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:roaa_weather/common/data/domain/weather/weather_repo.dart';
-import 'package:roaa_weather/common/data/models/weather/country_weather.dart';
-import 'package:roaa_weather/common/data/shared/data_source.dart';
+import 'package:weather_app/common/data/domain/weather/weather_repo.dart';
+import 'package:weather_app/common/data/models/weather/country_weather.dart';
+import 'package:weather_app/common/data/shared/data_source.dart';
 
 class WeatherViewModel extends ChangeNotifier {
   final WeatherRepo weatherRepo;

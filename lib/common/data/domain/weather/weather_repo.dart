@@ -1,6 +1,7 @@
-import 'package:roaa_weather/common/data/domain/weather/remote_weather_data_src.dart';
-import 'package:roaa_weather/common/data/models/weather/country_weather.dart';
-import 'package:roaa_weather/common/data/shared/data_source.dart';
+
+import 'package:weather_app/common/data/domain/weather/remote_weather_data_src.dart';
+import 'package:weather_app/common/data/models/weather/country_weather.dart';
+import 'package:weather_app/common/data/shared/data_source.dart';
 import 'local_weather_data_src.dart';
 
 class WeatherRepo {
